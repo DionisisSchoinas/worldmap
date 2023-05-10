@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block exercises %}
+
+<table style="border: solid; border-width: 1px;" align="center">
+	<h3 style="font-size: 7vmin">List of Maps</h3>
+	<td style="left: 50%">
+		<form action="." method="POST">{% csrf_token %}
+			{% for map in maps %}
+				<input style="width: 2vmin; height: 2vmin" type="radio" id="{{ map.id }}" name="selected" value="{{ map.id }}" required>
+				<label for="{{ map.id }}">{{ map.name }}</label><br>
+			{% endfor %}
+			<br><br>
+			<input class="btn" type="submit" id="select" name="select" value="Select">
+		</form>
+		<form action="." method="POST">{% csrf_token %}
+			<input class="btn" type="submit" name="cancel" value="Cancel"/>
+			<br>
+			<input class="btn" style="margin-left: 5vmin; margin-right: 5vmin;" type="submit" name="create" value="Create Map"/>
+		</form>
+	</td>
+</table>
+{% if maps|length == 0 %}
+	<script>
+		document.getElementById("select").disabled = true;
+	</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block exercises %}
+
+<table style="border: solid; border-width: 1px;" align="center">
+	<h3 style="font-size: 7vmin">Login</h3>
+	<td style="left: 50%">
+		<form action="." method="POST">{% csrf_token %}
+			{{ form.as_p }}
+			{{ message }}
+			<br>
+			<input class="btn" type="submit" name="login" value="Login"/>
+		</form>
+		<form action="." method="POST">{% csrf_token %}
+			<input class="btn" type="submit" name="register" value="Register"/>
+		</form>
+	</td>
+</table>
+
+{% endblock %}

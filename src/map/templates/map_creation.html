@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block exercises %}
+
+<style>
+	input {
+		font-size: 2vmin;
+	}
+</style>
+
+<table style="border: solid; border-width: 1px;" align="center">
+	<h3 style="font-size: 7vmin">Create Map</h3>
+	<td style="left: 50%">
+		<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+			{{form.as_p}}
+			<input class="btn" type="submit" name="create" value="Create Map"/>
+		</form>
+		<form action="." method="POST">{% csrf_token %}
+			<input class="btn" type="submit" name="cancel" value="Cancel"/>
+		</form>
+	</td>
+</table>
+
+{% endblock %}
